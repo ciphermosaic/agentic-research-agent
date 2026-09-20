@@ -1,1 +1,1 @@
-# agentic-research-agent
+Research Agent

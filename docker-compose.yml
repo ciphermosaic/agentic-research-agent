@@ -1,0 +1,28 @@
+services:
+
+  research-agent:
+    build: .
+    container_name: research-agent
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./memory.db:/app/memory.db
+    restart: unless-stopped
+
+  chroma:
+    image: chromadb/chroma:latest
+    container_name: research-agent-chroma
+    ports:
+      - "8001:8000"
+    volumes:
+      - chroma_data:/data
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/data
+    restart: unless-stopped
+
+volumes:
+  chroma_data:
