@@ -1,7 +1,6 @@
 from app.agent.graph import (
     research_graph
-)
-
+)
 from app.memory.database import (
     initialize_database
 )
